@@ -5,8 +5,17 @@
     "Step 1 - C": {
       "name": "Step 1 - C",
       "isOrdered": true,
-      "folders": {},
-      "files": {}
+      "folders": {
+        "Side": {
+          "name": "Side",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
+      "files": {
+        "Step - 1": 0
+      }
     }
   },
   "files": {

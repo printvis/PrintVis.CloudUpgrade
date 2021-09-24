@@ -13,6 +13,7 @@ The tool is leveraging the Azure Data Factory that is hosted by Microsoft and ru
 
 Everything is perpared in C/Side and in the old system no extensions are required nore do we run any PowerShell scripts. We tried to make this as simple as possible.
 The mandatory and optional actions required for this step are guided by a wizard and the system will prevent you from starting the data migration before all mandatory steps are finished.
+
 ![img_0.png](.media/img_0.png)
 
 ## Step 2 - Visual Studio Code & Business Central Online
@@ -21,3 +22,9 @@ The actual data migration is triggered from the Business Central Online tenant a
 We have also created a wizard to help in this process and make sure you don't forget anything.
 
 ## Optional Steps
+
+As part of the upgrade there are two optional steps that we guide you with.
+
+The first step is to create the Per Tenant Extension that contains the customizations that you have done in the current system. We advise to use the free of use converter of ForNAV. We have added an example of how to use this in combination with PrintVis and define a to-do list for managing your migration.
+
+A second step might be to run Business Central On Premises or in a private cloud. If this is required by one of your customers we still recommend following step 1 and step 2. At the end of step 2 you can download the .pacpak file from the Admin Portal and mount this on a multi tenant environment.
