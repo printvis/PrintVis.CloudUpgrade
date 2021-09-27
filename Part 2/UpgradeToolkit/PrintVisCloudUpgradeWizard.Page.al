@@ -57,10 +57,10 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     }
                 }
             }
-            group(Control12)
+            group(Preparations)
             {
                 Visible = CustomizationsStepVisible;
-                group(Control27)
+                group(Preparation)
                 {
                     InstructionalText = 'Prepare your code customizations for the upgrade...';
                     Visible = CustomizationsStepVisible;
@@ -68,14 +68,15 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     {
                         Caption = 'Status';
                         Editable = false;
+                        ApplicationArea = All;
                         SubPageView = where("Conversion Step" = const(" "));
                     }
                 }
             }
-            group(Control100000018)
+            group(PrintVisSteps)
             {
                 Visible = PrintVisStepVisible;
-                group(Control100000012)
+                group(PrintVisStep)
                 {
                     InstructionalText = 'Enter the credentials for the account, which will be used for sending the invoice emails.';
                     Visible = PrintVisStepVisible;
@@ -83,6 +84,7 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     {
                         Caption = 'Status';
                         Editable = false;
+                        ApplicationArea = All;
                         SubPageView = where("Preparation Step" = const(" "));
                     }
                 }

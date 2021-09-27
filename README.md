@@ -21,6 +21,8 @@ The mandatory and optional actions required for this step are guided by a wizard
 The actual data migration is triggered from the Business Central Online tenant at the customer. This part is documented by Microsoft, but to make it easier, we combined the documentation from Microsoft in one place to get you started as fast as possible.
 We have also created a wizard to help in this process and make sure you don't forget anything.
 
+![CloudWizard.png](.media/CloudWizard.png)
+
 ## Optional Steps
 
 As part of the upgrade there are two optional steps that we guide you with.
