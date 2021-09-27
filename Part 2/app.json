@@ -1,0 +1,31 @@
+{
+  "id": "d3a2c31e-25cc-4a5a-9f21-0129ba360678",
+  "name": "My PrintVis Modifications",
+  "publisher": "PrintVis Partner",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [{
+    "id": "5452f323-059e-499a-9753-5d2c07eef904",
+    "name": "PrintVis",
+    "publisher": "NovaVision Software A/S",
+    "version": "18.3.0.0"
+  }],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://MyPrintVisModifications.com/help/",
+  "showMyCode": true,
+  "runtime": "7.0"
+}
