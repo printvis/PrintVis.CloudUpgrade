@@ -30,3 +30,5 @@ As part of the upgrade there are two optional steps that we guide you with.
 The first step is to create the Per Tenant Extension that contains the customizations that you have done in the current system. We advise to use the free of use converter of ForNAV. We have added an example of how to use this in combination with PrintVis and define a to-do list for managing your migration.
 
 A second step might be to run Business Central On Premises or in a private cloud. If this is required by one of your customers we still recommend following step 1 and step 2. At the end of step 2 you can download the .pacpak file from the Admin Portal and mount this on a multi tenant environment.
+
+![](https://www.youtube.com/watch?v=mW3eHANgveA)
