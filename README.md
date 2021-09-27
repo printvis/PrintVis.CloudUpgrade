@@ -31,4 +31,6 @@ The first step is to create the Per Tenant Extension that contains the customiza
 
 A second step might be to run Business Central On Premises or in a private cloud. If this is required by one of your customers we still recommend following step 1 and step 2. At the end of step 2 you can download the .pacpak file from the Admin Portal and mount this on a multi tenant environment.
 
-![](https://www.youtube.com/watch?v=mW3eHANgveA)
+<video width="320" height="240" controls>
+  <source src="https://www.youtube.com/watch?v=mW3eHANgveA">
+</video>
