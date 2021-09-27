@@ -9,14 +9,14 @@ The Toolkit has two mandatory parts do execute the data conversion and a few opt
 We believe that the steps provided in this toolkit are the easiest and fastest way to migrate a PrintVis system to the latest current version. Based on the feedback from our previous toolkit we decided to avoid any scripting with PowerShell, generate as much code as possible for you and provide templates for the customizations you have probably done to the old system.
 The tool is leveraging the Azure Data Factory that is hosted by Microsoft and runs only in the cloud. If you want your customer to run On Premises or hosted in their own, private, cloud we recommend still using this toolkit and at the end, downloading the .bacpac and restore this in the desired environment.
 
-## Step 1 - C/Side
+## [Step 1 - C/Side](https://github.com/printvis/PrintVis.CloudUpgrade/blob/main/Part%201/README.md)
 
 Everything is perpared in C/Side and in the old system no extensions are required nore do we run any PowerShell scripts. We tried to make this as simple as possible.
 The mandatory and optional actions required for this step are guided by a wizard and the system will prevent you from starting the data migration before all mandatory steps are finished.
 
 ![img_0.png](.media/img_0.png)
 
-## Step 2 - Visual Studio Code & Business Central Online
+## [Step 2 - Visual Studio Code & Business Central Online](https://github.com/printvis/PrintVis.CloudUpgrade/blob/main/Part%202/README.md)
 
 The actual data migration is triggered from the Business Central Online tenant at the customer. This part is documented by Microsoft, but to make it easier, we combined the documentation from Microsoft in one place to get you started as fast as possible.
 We have also created a wizard to help in this process and make sure you don't forget anything.
