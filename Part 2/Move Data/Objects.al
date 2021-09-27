@@ -3,9 +3,9 @@ Codeunit 50001 "Move Data Around"
 
     trigger OnRun()
     begin
-        Dlg.Open('Converting to CloudLift Tables #1################');
+        Dlg.Open('Converting Interim Tables #1################');
         AllObj.SetRange("Object Type", AllObj."object type"::Table);
-        AllObj.SetFilter("Object Name", 'CloudLift*');
+        AllObj.SetFilter("Object Name", 'PTE Interim*');
         AllObj.FindSet;
         repeat
             Dlg.Update(1, AllObj."Object ID");

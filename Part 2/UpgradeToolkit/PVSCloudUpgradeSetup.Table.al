@@ -7,15 +7,15 @@ Table 99998 "PVS Cloud Upgrade Setup"
         {
             DataClassification = ToBeClassified;
         }
-        field(10; Customizations; Option)
+        field(10; Preparations; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = "Not Required",Required,"Code Generated",Executed;
+            OptionMembers = "Import Toolkit","Setup Integration Runtime","Configure Table Mapping","Install Extensions";
         }
-        field(20; PrintVis; Option)
+        field(20; "Data Conversion"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = Imported,Executed,Error,Ready;
+            OptionMembers = Configured,Executed,Error,Ready;
         }
     }
 
@@ -35,63 +35,52 @@ Table 99998 "PVS Cloud Upgrade Setup"
     procedure InitializeUpgrade()
     var
         UpgradeProgress: Record "PVS Upgrade Progress";
-        PrintVisCloudUpgradeMgt: Codeunit "Upgrade - BaseApp";
-    // UpgradeMoveData: Codeunit UnknownCodeunit104001;
     begin
-        // if PrintVisCloudUpgradeMgt.CustomizationsExist then begin
-        Customizations := Customizations::Required;
+        Preparations := Preparations::"Setup Integration Runtime";
 
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::"Execte Conversion";
-        UpgradeProgress.Description := 'Execute customizations migration';
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::"Import Toolkit";
+        UpgradeProgress.Description := 'Import Cloud Migration Toolkit';
+        UpgradeProgress.Status := UpgradeProgress.Status::Executed;
+        UpgradeProgress.Insert;
+
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::"Setup Integration Runtime";
+        UpgradeProgress.Description := 'Connect Business Central to On Premises';
         UpgradeProgress.Status := UpgradeProgress.Status::Manual;
         UpgradeProgress.Insert;
 
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::"Generate C/Side Code";
-        UpgradeProgress.Description := 'Generate Code for Customization Migration';
-        UpgradeProgress.Status := UpgradeProgress.Status::Required;
-        UpgradeProgress.Insert;
-
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::"Import C/Side Code";
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::"Install Extensions";
         UpgradeProgress.Description := 'Import generated code into C/Side';
         UpgradeProgress.Status := UpgradeProgress.Status::Required;
         UpgradeProgress.Insert;
 
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::"Generate AL Code";
-        UpgradeProgress.Description := 'Generate Intermediate PTE Extension';
-        UpgradeProgress.Status := UpgradeProgress.Status::Manual;
-        UpgradeProgress.Insert;
-
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::"Use ForNAV to make PTE";
-        UpgradeProgress.Description := 'Use ForNAV converter to generate PTE Extension';
-        UpgradeProgress.Status := UpgradeProgress.Status::Manual;
-        UpgradeProgress.Insert;
-        // end;
-
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::" ";
-        UpgradeProgress."PrintVis Step" := UpgradeProgress."printvis step"::"Import Conversion Tool";
-        UpgradeProgress.Description := 'Import Upgrade Toolkit';
-        UpgradeProgress.Status := UpgradeProgress.Status::Executed;
-        UpgradeProgress.Insert;
-
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::" ";
-        UpgradeProgress."PrintVis Step" := UpgradeProgress."printvis step"::"Execute Conversion Tool";
-        UpgradeProgress.Description := 'Execute Conversion Tool';
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::"Configure Table Mapping";
+        UpgradeProgress.Description := 'Configure Table Mapping';
         UpgradeProgress.Status := UpgradeProgress.Status::Required;
         UpgradeProgress.Insert;
 
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::" ";
-        UpgradeProgress."PrintVis Step" := UpgradeProgress."printvis step"::"Fix Errors";
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
+        UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::Configured;
+        UpgradeProgress.Description := 'Configure Data Migration';
+        UpgradeProgress.Status := UpgradeProgress.Status::Executed;
+        UpgradeProgress.Insert;
+
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
+        UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::Executed;
+        UpgradeProgress.Description := 'Data Migration is Executed';
+        UpgradeProgress.Status := UpgradeProgress.Status::Required;
+        UpgradeProgress.Insert;
+
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
+        UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::Error;
         UpgradeProgress.Description := 'Fix migration erros';
         UpgradeProgress.Status := UpgradeProgress.Status::Manual;
         UpgradeProgress.Insert;
 
-        UpgradeProgress."Customization Step" := UpgradeProgress."customization step"::" ";
-        UpgradeProgress."PrintVis Step" := UpgradeProgress."printvis step"::"Renamed Fields";
-        UpgradeProgress.Description := 'Import Renamed Fields';
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
+        UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::Ready;
+        UpgradeProgress.Description := 'Ready';
         UpgradeProgress.Status := UpgradeProgress.Status::Manual;
         UpgradeProgress.Insert;
-
-        // UpgradeMoveData.InitializeUpgradeStatus;
     end;
 }
 

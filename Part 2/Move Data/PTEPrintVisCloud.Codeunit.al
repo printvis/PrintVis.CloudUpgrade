@@ -8,14 +8,14 @@ codeunit 80001 "PTE PrintVis Cloud"
 
     procedure MoveData()
     var
-        PTETablesStatus: Record "PTE Tables Status";
+        PTETablesStatus: Record "PTE Upgrade Table Status";
         Company: Record Company;
         c: Integer;
         i: Integer;
         w: Dialog;
         Text000: Label '#1';
     begin
-        PTETablesStatus.SETRANGE(CompletedCloud, FALSE);
+        PTETablesStatus.SETRANGE(Completed, false);
         c := PTETablesStatus.COUNT;
         w.OPEN(Text000, c);
         if PTETablesStatus.findset then
@@ -24,10 +24,10 @@ codeunit 80001 "PTE PrintVis Cloud"
                     CLEARLASTERROR;
                     COMMIT;
                     if CODEUNIT.RUN(80002, PTETablesStatus) then BEGIN
-                        PTETablesStatus.CompletedCloud := TRUE;
+                        PTETablesStatus.Completed := TRUE;
                         if PTETablesStatus.modify() then;
                     END ELSE BEGIN
-                        PTETablesStatus.LastError := COPYSTR(GETLASTERRORTEXT, 1, 250);
+                        PTETablesStatus."Last Error" := COPYSTR(GETLASTERRORTEXT, 1, 250);
                         if PTETablesStatus.modify() then;
                     END;
                     i += 1;

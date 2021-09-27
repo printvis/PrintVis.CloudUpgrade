@@ -3,6 +3,8 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
     Caption = 'PrintVis Cloud Upgrade Wizard';
     PageType = NavigatePage;
     SourceTable = "PVS Cloud Upgrade Setup";
+    ApplicationArea = All;
+    UsageCategory = Administration;
 
     layout
     {
@@ -17,7 +19,7 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     Visible = FirstStepVisible;
                     group(LetsGo)
                     {
-                        InstructionalText = 'Let''s get your data to the cloud...';
+                        InstructionalText = 'Let''s convert your interim data...';
                         ShowCaption = false;
                     }
                 }
@@ -26,7 +28,7 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     InstructionalText = 'Upgrade progress...';
                     ShowCaption = false;
                     Visible = FirstStepVisible;
-                    field(CustomizationsStatus; Rec.Customizations)
+                    field(CustomizationsStatus; Rec.Preparations)
                     {
                         ApplicationArea = Basic;
                         Caption = 'Customizations';
@@ -66,7 +68,7 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     {
                         Caption = 'Status';
                         Editable = false;
-                        SubPageView = where("PrintVis Step" = const(" "));
+                        SubPageView = where("Conversion Step" = const(" "));
                     }
                 }
             }
@@ -81,7 +83,7 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
                     {
                         Caption = 'Status';
                         Editable = false;
-                        SubPageView = where("Customization Step" = const(" "));
+                        SubPageView = where("Preparation Step" = const(" "));
                     }
                 }
             }
@@ -201,15 +203,15 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
 
     local procedure EnableControls()
     begin
-        if Rec.Customizations in [Rec.Customizations::Required .. Rec.Customizations::"Code Generated"] then
+        if Rec.Preparations in [Rec.Preparations::"Setup Integration Runtime" .. Rec.Preparations::"Configure Table Mapping"] then
             CustStyle := 'Unfavorable'
         else
             CustStyle := 'Favorable';
 
-        case Rec.PrintVis of
-            Rec.Printvis::Executed:
+        case Rec."Data Conversion" of
+            Rec."Data Conversion"::Executed:
                 PVSStyle := 'Favorable';
-            Rec.Printvis::Error:
+            Rec."Data Conversion"::Error:
                 PVSStyle := 'Unfavorable';
             else
                 PVSStyle := 'Ambiguous';
@@ -305,11 +307,11 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
         Vanilla: label 'It looks like you are using an unmodified version of PrintVis. You can skip this step.';
         NotReady: label 'The modifications you made to PrintVis are not ready to migrate, click on the next button to start the process...';
     begin
-        if Rec.Customizations = Rec.Customizations::Executed then
+        if Rec.Preparations = Rec.Preparations::"Install Extensions" then
             exit(Ready);
 
-        if Rec.Customizations = Rec.Customizations::"Not Required" then
-            exit(Vanilla);
+        // if Rec.Preparations = Rec.Preparations::"Not Required" then
+        //     exit(Vanilla);
 
         exit(NotReady);
     end;
@@ -321,10 +323,10 @@ Page 99997 "PrintVis Cloud Upgrade Wizard"
         HasError: label 'Your conversion has issues, please look at the details.';
         Imported: label 'Get ready to move your PrintVis to the cloud!';
     begin
-        if Rec.PrintVis = Rec.Printvis::Executed then
+        if Rec."Data Conversion" = Rec."Data Conversion"::Executed then
             exit(Ready);
 
-        if Rec.PrintVis = Rec.Printvis::Error then
+        if Rec."Data Conversion" = Rec."Data Conversion"::Error then
             exit(HasError);
 
         exit(Imported);
