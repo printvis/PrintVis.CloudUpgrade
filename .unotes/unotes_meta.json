@@ -2,19 +2,37 @@
   "name": "",
   "isOrdered": true,
   "folders": {
-    "Step 1 - C": {
-      "name": "Step 1 - C",
+    "Example Per Tenant Extension": {
+      "name": "Example Per Tenant Extension",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Part 1": {
+      "name": "Part 1",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "Part 2": {
+      "name": "Part 2",
       "isOrdered": true,
       "folders": {
-        "Side": {
-          "name": "Side",
+        "tables": {
+          "name": "tables",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        },
+        "Test": {
+          "name": "Test",
           "isOrdered": true,
           "folders": {},
           "files": {}
         }
       },
       "files": {
-        "Step - 1": 0
+        "README": 0
       }
     }
   },
