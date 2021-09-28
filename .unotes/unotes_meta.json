@@ -12,7 +12,9 @@
       "name": "Part 1",
       "isOrdered": true,
       "folders": {},
-      "files": {}
+      "files": {
+        "README": 0
+      }
     },
     "Part 2": {
       "name": "Part 2",
@@ -34,6 +36,12 @@
       "files": {
         "README": 0
       }
+    },
+    "Example CSide Modifications": {
+      "name": "Example CSide Modifications",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
     }
   },
   "files": {
