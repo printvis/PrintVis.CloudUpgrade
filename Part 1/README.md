@@ -15,7 +15,7 @@ NOTE - Running the Upgrade Toolkit requires a Partner License to be activated on
 The Wizard has automatically scans the database for any data customizations. If you have customized PrintVis it is mandatory to process these changes before preparing PrintVis tables. If you skip this step there is a chance that you remove data that cannot be recovered without restoring a backup.
 As part of the upgrade project we will create the Per Tenant Extension skeleton that will hold your customizations in the Cloud system.
 
-[![ImportUpgradeToolkit](.media/ImportUpgradeToolkit.png)](https://www.youtube.com/watch?v=XRGSMVC54TM "Import Upgrade Toolkit Click to Watch!")
+[![ImportUpgradeToolkit](../.media/ImportUpgradeToolkit.png)](https://www.youtube.com/watch?v=XRGSMVC54TM "Import Upgrade Toolkit Click to Watch!")
 
 <br>
 ```
