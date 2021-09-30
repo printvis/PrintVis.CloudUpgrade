@@ -19,18 +19,7 @@ Table 99998 "PVS Cloud Upgrade Setup"
         }
     }
 
-    keys
-    {
-        key(Key1; "Primary Key")
-        {
-            Clustered = true;
-        }
-    }
-
-    fieldgroups
-    {
-    }
-
+    keys { key(Key1; "Primary Key") { Clustered = true; } }
 
     procedure InitializeUpgrade()
     var

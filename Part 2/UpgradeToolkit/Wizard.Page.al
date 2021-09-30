@@ -10,6 +10,18 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
     {
         area(content)
         {
+            group(StartImage)
+            {
+                Editable = false;
+                ShowCaption = false;
+                Visible = TopBannerVisible;
+                field("MediaResourcesStandard.""Media Reference"""; MediaResourcesStandard."Media Reference")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                    ShowCaption = false;
+                }
+            }
             group(FirstStep)
             {
                 Visible = FirstStepVisible;
@@ -19,15 +31,10 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
                     Visible = FirstStepVisible;
                     group(LetsGo)
                     {
-                        InstructionalText = 'Let''s convert your interim data...';
+                        InstructionalText = 'Let''s convert your data...';
                         ShowCaption = false;
                     }
-                }
-                group(Progress)
-                {
-                    InstructionalText = 'Upgrade progress...';
-                    ShowCaption = false;
-                    Visible = FirstStepVisible;
+
                     field(CustomizationsStatus; Rec.Preparations)
                     {
                         ApplicationArea = Basic;
@@ -95,20 +102,7 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
                 group("That's it!")
                 {
                     Caption = 'That''s it!';
-                    InstructionalText = 'If you want to verify that the specified email setup works, click on Send test email.';
-                    field(OpenCloud; true)
-                    {
-                        ApplicationArea = Basic, Suite, Invoicing;
-                        Editable = false;
-                        ShowCaption = false;
-                        Style = StandardAccent;
-                        StyleExpr = true;
-
-                        trigger OnDrillDown()
-                        begin
-                            Hyperlink('https://businesscentral.dynamics.com');
-                        end;
-                    }
+                    InstructionalText = 'Your PrintVis Cloud System is ready to be used.';
                 }
             }
         }
@@ -191,16 +185,10 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
     end;
 
     var
-        CustStyle: Text;
-        PVSStyle: Text;
-        FirstStepVisible: Boolean;
-        CustomizationsStepVisible: Boolean;
-        PrintVisStepVisible: Boolean;
-        FinalStepVisible: Boolean;
-        FinishActionEnabled: Boolean;
-        BackActionEnabled: Boolean;
-        NextActionEnabled: Boolean;
-        SetupCompleted: Boolean;
+        MediaRepositoryDone, MediaRepositoryStandard : Record "Media Repository";
+        MediaResourcesDone, MediaResourcesStandard : Record "Media Resources";
+        PVSStyle, CustStyle : Text;
+        TopBannerVisible, FirstStepVisible, CustomizationsStepVisible, FinalStepVisible, PrintVisStepVisible, FinishActionEnabled, BackActionEnabled, NextActionEnabled, SetupCompleted : Boolean;
         Step: Option Start,Customizations,PrintVis,Finish;
 
     local procedure EnableControls()
@@ -218,7 +206,7 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
             else
                 PVSStyle := 'Ambiguous';
         end;
-
+        LoadTopBanners;
         ResetControls;
 
         case Step of
@@ -269,22 +257,26 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
         FirstStepVisible := true;
         FinishActionEnabled := false;
         BackActionEnabled := false;
+        TopBannerVisible := true;
     end;
 
     local procedure ShowSettingsStep()
     begin
+        TopBannerVisible := false;
         CustomizationsStepVisible := true;
         NextActionEnabled := true;
     end;
 
     local procedure ShowPrintVisStep()
     begin
+        TopBannerVisible := false;
         PrintVisStepVisible := true;
         NextActionEnabled := true;
     end;
 
     local procedure ShowFinishStep()
     begin
+        TopBannerVisible := true;
         FinalStepVisible := true;
         NextActionEnabled := false;
         FinishActionEnabled := true;
@@ -334,13 +326,18 @@ Page 99999 "PrintVis Cloud Upgrade Wizard"
         exit(Imported);
     end;
 
-
-    procedure CustomizationsStyle(): Text
+    local procedure LoadTopBanners()
     var
-        Ready: label 'Your code customizations are ready to go!';
-        Vanilla: label 'It looks like you are using an unmodified version of PrintVis. You can skip this step.';
-        NotReady: label 'The modifications you made to PrintVis are not ready to migrate, click on the next button to start the process...';
+        ClientTypeManagement: Codeunit "Client Type Management";
     begin
+        if MediaRepositoryStandard.Get('WhatsNewWizard-Banner-First.png', Format(ClientTypeManagement.GetCurrentClientType)) and
+           MediaRepositoryDone.Get('AssistedSetupDone-NoText-400px.png', Format(ClientTypeManagement.GetCurrentClientType))
+        then
+            if MediaResourcesStandard.Get(MediaRepositoryStandard."Media Resources Ref") and
+               MediaResourcesDone.Get(MediaRepositoryDone."Media Resources Ref")
+            then
+                TopBannerVisible := MediaResourcesDone."Media Reference".HasValue;
     end;
+
 }
 
