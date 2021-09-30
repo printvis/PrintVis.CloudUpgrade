@@ -66,6 +66,12 @@ Table 99998 "PVS Cloud Upgrade Setup"
         UpgradeProgress.Insert;
 
         UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
+        UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::RunUpgrade;
+        UpgradeProgress.Description := 'Run Cloud Upgrade Steps (Per Company)';
+        UpgradeProgress.Status := UpgradeProgress.Status::Required;
+        UpgradeProgress.Insert;
+
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
         UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::Ready;
         UpgradeProgress.Description := 'Ready';
         UpgradeProgress.Status := UpgradeProgress.Status::Manual;

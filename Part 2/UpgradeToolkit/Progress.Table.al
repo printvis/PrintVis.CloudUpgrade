@@ -11,7 +11,7 @@ Table 99999 "PVS Upgrade Progress"
         field(2; "Conversion Step"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ",Configured,Executed,Error,Ready;
+            OptionMembers = " ",Configured,Executed,Error,RunUpgrade,Ready;
         }
         field(3; Description; Text[250])
         {
@@ -26,13 +26,7 @@ Table 99999 "PVS Upgrade Progress"
         }
     }
 
-    keys
-    {
-        key(Key1; "Preparation Step", "Conversion Step")
-        {
-            Clustered = true;
-        }
-    }
+    keys { key(Key1; "Preparation Step", "Conversion Step") { Clustered = true; } }
 
 
     procedure ExecuteStep()
@@ -58,6 +52,8 @@ Table 99999 "PVS Upgrade Progress"
                 Page.Run(4003);
             "Conversion step"::Error:
                 Page.Run(Page::"PrintVis Cloud Upgrade Details");
+            "Conversion Step"::RunUpgrade:
+                RunUpgrade;
             "Conversion Step"::Ready:
                 Message('Congratulations');
         end;
@@ -65,5 +61,35 @@ Table 99999 "PVS Upgrade Progress"
         Status := Status::Executed;
         Modify;
     end;
+
+    local procedure RunUpgrade()
+    var
+        UpgradeLogic: Codeunit "PTE Upgrade Logic";
+    begin
+        UpgradeLogic.CapUnitRoundingUpDown();
+
+        UpgradeLogic.MergePointerTables();
+        UpgradeLogic.MovedCustomerTemplateIfNotExist();
+        UpgradeLogic.MovedItemTemplateIfNotExist();
+        UpgradeLogic.MoveCaseMgtMatrix();
+        UpgradeLogic.MovePlanningBoardPermissionDo();
+        ConvertCombinedShipments();
+        UpgradeLogic.UpgradeGrossQuotedPricePVSJob();
+
+
+    end;
+
+    local procedure ConvertCombinedShipments()
+    var
+        Shpmnt: Record "PVS Job Shipment";
+    begin
+        Shpmnt.SetFilter("Combined Shipment No.", '%1', '');
+        if Shpmnt.FindSet(true) then
+            repeat
+                Shpmnt.GetCombinedShipmentNo();
+                Shpmnt.Modify()
+            until Shpmnt.Next() = 0;
+    end;
+
 }
 
