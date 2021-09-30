@@ -1,4 +1,4 @@
-Page 99997 "PrintVis Cloud Upgrade Wizard"
+Page 99999 "PrintVis Cloud Upgrade Wizard"
 {
     Caption = 'PrintVis Cloud Upgrade Wizard';
     PageType = NavigatePage;

@@ -49,7 +49,7 @@ Table 99998 "PVS Cloud Upgrade Setup"
         UpgradeProgress.Insert;
 
         UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::"Install Extensions";
-        UpgradeProgress.Description := 'Import generated code into C/Side';
+        UpgradeProgress.Description := 'Install Per Tenant Extension';
         UpgradeProgress.Status := UpgradeProgress.Status::Required;
         UpgradeProgress.Insert;
 
