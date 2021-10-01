@@ -79,7 +79,7 @@ Table 99999 "PVS Upgrade Progress"
         CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
     begin
         if CloudUpgradeMgt.CustomizationsExist() then
-            Description := 'Install Per Tenant Extension'
+            Description := 'Install Per Tenant Extension' // TODO, write some code to test if the PTE is also there!
         else
             Description := 'You have not modified the system';
         if xRec.Description <> Rec.Description then
