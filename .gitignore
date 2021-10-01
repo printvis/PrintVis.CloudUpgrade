@@ -2,3 +2,4 @@
 .vscode/
 *.app
 *.ps1
+/Part 2/Place Customization Tables Here/*.al
