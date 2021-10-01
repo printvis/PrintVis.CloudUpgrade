@@ -65,6 +65,12 @@ Table 99998 "PVS Cloud Upgrade Setup"
         UpgradeProgress.Insert;
 
         UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
+        UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::MigrateInterimExtensions;
+        UpgradeProgress.Description := 'Migrate Interim Extensions';
+        UpgradeProgress.Status := UpgradeProgress.Status::Required;
+        UpgradeProgress.Insert;
+
+        UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::" ";
         UpgradeProgress."Conversion Step" := UpgradeProgress."Conversion Step"::Error;
         UpgradeProgress.Description := 'Fix migration erros';
         UpgradeProgress.Status := UpgradeProgress.Status::Manual;

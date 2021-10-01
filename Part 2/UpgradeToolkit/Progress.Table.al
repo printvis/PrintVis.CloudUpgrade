@@ -11,7 +11,7 @@ Table 99999 "PVS Upgrade Progress"
         field(2; "Conversion Step"; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = " ",Configured,Executed,Error,RunUpgrade,Ready;
+            OptionMembers = " ",Configured,Executed,Error,MigrateInterimExtensions,RunUpgrade,Ready;
         }
         field(3; Description; Text[250])
         {
@@ -47,9 +47,14 @@ Table 99999 "PVS Upgrade Progress"
 
         case "Conversion Step" of
             "Conversion step"::Configured:
-                Message('Write some code to test this'); // TODO Write some code to test this'
+                begin
+                    TestIfRealPerTenantExtensionExists;
+                    TestMapping;
+                end;
             "Conversion Step"::Executed:
                 Page.Run(4003);
+            "Conversion Step"::MigrateInterimExtensions:
+                MigrateInterimExtensions;
             "Conversion step"::Error:
                 Page.Run(Page::"PrintVis Cloud Upgrade Details");
             "Conversion Step"::RunUpgrade:
@@ -78,12 +83,46 @@ Table 99999 "PVS Upgrade Progress"
     var
         CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
     begin
-        if CloudUpgradeMgt.CustomizationsExist() then
-            Description := 'Install Per Tenant Extension' // TODO, write some code to test if the PTE is also there!
-        else
+        if CloudUpgradeMgt.CustomizationsExist() then begin
+            Description := 'Install Per Tenant Extension';
+            TestIfRealPerTenantExtensionExists;
+        end else
             Description := 'You have not modified the system';
         if xRec.Description <> Rec.Description then
             Message('Thanks for checking again... we''ve updated the status...');
+    end;
+
+    local procedure MigrateInterimExtensions()
+    var
+        CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
+    begin
+        CloudUpgradeMgt.MigratePerTenantExtension();
+        CloudUpgradeMgt.MoveData();
+    end;
+
+    local procedure TestIfRealPerTenantExtensionExists()
+    var
+        AllObj: Record AllObj;
+        Fld: Record Field;
+        FldExt: Record Field;
+        Info: ModuleInfo;
+        BaseTableId: Integer;
+    begin
+        NavApp.GetCurrentModuleInfo(Info);
+        AllObj.SetFilter("Object Name", 'PTE Interim*');
+        AllObj.SetRange("Object Type", AllObj."Object Type"::Table);
+        AllObj.SetRange("Object ID", 50000, 99949);
+        if AllObj.FindSet() then
+            repeat
+                Evaluate(BaseTableId, CopyStr(AllObj."Object Name", 12, 99));
+                Fld.SetRange(TableNo, AllObj."Object ID");
+                Fld.SetRange("No.", 50000, 99999);
+                if Fld.FindSet() then
+                    repeat
+                        if not FldExt.Get(BaseTableId, Fld."No.") then
+                            Error('Table Extension not found for table %1', BaseTableId);
+                    until Fld.Next() = 0;
+            until AllObj.Next() = 0;
     end;
 
     local procedure RunUpgrade()
@@ -99,8 +138,21 @@ Table 99999 "PVS Upgrade Progress"
         UpgradeLogic.MovePlanningBoardPermissionDo();
         ConvertCombinedShipments();
         UpgradeLogic.UpgradeGrossQuotedPricePVSJob();
+    end;
 
+    local procedure TestMapping()
+    var
+        MigrationTableMapping: RecordRef;
+        FldRef: FieldRef;
+    begin
+        MigrationTableMapping.Open(4009);
+        FldRef := MigrationTableMapping.Field(8); // Extension Name
 
+        FldRef.SetRange('PrintVis Cloud Upgrade Toolkit');
+        MigrationTableMapping.FindFirst();
+
+        FldRef.SetRange('PrintVis');
+        MigrationTableMapping.FindFirst();
     end;
 
     local procedure ConvertCombinedShipments()
