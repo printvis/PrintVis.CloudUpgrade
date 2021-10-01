@@ -27,5 +27,6 @@
   ],
   "contextSensitiveHelpUrl": "https://MyPrintVisModifications.com/help/",
   "showMyCode": true,
+  "target": "Cloud",
   "runtime": "7.0"
 }

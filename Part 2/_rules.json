@@ -1,0 +1,11 @@
+{
+    "name": "PrintVis Cloud Upgrade Toolkit",
+    "description": "This toolit has to call into code that is obsoleted and we don't want to see these warnings",
+    "rules": [
+        {
+            "id": "AL0432",
+            "action": "Hidden",
+            "justification": "Justification"
+        }
+    ]
+}
