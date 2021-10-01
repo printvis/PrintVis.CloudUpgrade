@@ -6,7 +6,7 @@ codeunit 99996 "PTE Test Upgrade"
     var
         Cust: Record Customer;
         CustPTE: Record "PTE CustomerEXT";
-        Conversion: Codeunit "Move Data Around";
+        Conversion: Codeunit "PTE Cloud Upgrade Mgt.";
     begin
         // [Given]
         Cust.FindSet();
@@ -17,7 +17,7 @@ codeunit 99996 "PTE Test Upgrade"
         until Cust.Next() = 0;
 
         // [When]
-        Conversion.Run();
+        Conversion.MigratePerTenantExtension();
 
         // [Then]
         Cust.FindSet();

@@ -1,4 +1,4 @@
-Table 80325 "PTE VAT Posting SetupEXT"
+Table 99991 "PTE VAT Posting SetupEXT"
 {
 
     fields

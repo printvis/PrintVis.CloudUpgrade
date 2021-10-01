@@ -16,8 +16,7 @@ Page 99997 "PrintVis Cloud Upgrade Subpage"
                 {
                     ApplicationArea = Basic;
                     Editable = false;
-                    Style = StandardAccent;
-                    StyleExpr = true;
+                    StyleExpr = StepStyle;
 
                     trigger OnDrillDown()
                     begin
@@ -32,8 +31,12 @@ Page 99997 "PrintVis Cloud Upgrade Subpage"
         }
     }
 
-    actions
-    {
-    }
+    var
+        StepStyle: Text;
+
+    trigger OnAfterGetRecord()
+    begin
+        StepStyle := Rec.GetStepStyle;
+    end;
 }
 

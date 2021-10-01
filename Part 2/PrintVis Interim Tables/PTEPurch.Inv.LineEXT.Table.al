@@ -1,4 +1,4 @@
-Table 80123 "PTE Purch. Inv. LineEXT"
+Table 99968 "PTE Purch. Inv. LineEXT"
 {
 
     fields

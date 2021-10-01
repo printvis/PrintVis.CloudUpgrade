@@ -1,4 +1,4 @@
-Table 80224 "PTE Order AddressEXT"
+Table 99966 "PTE Order AddressEXT"
 {
 
     fields

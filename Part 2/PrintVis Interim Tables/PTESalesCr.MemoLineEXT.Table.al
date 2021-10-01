@@ -1,4 +1,4 @@
-Table 80115 "PTE Sales Cr.Memo LineEXT"
+Table 99978 "PTE Sales Cr.Memo LineEXT"
 {
 
     fields

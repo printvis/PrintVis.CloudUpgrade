@@ -1,4 +1,4 @@
-Table 80036 "PTE Sales HeaderEXT"
+Table 99980 "PTE Sales HeaderEXT"
 {
 
     fields

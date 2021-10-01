@@ -1,4 +1,4 @@
-Table 87347 "PTE Internal Movement LineEXT"
+Table 99958 "PTE Internal Movement LineEXT"
 {
 
     fields

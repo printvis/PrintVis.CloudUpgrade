@@ -1,4 +1,4 @@
-Table 80023 "PTE VendorEXT"
+Table 99992 "PTE VendorEXT"
 {
 
     fields

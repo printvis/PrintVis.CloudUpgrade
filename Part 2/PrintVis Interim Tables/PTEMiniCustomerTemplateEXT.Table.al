@@ -1,4 +1,4 @@
-Table 81300 "PTE Mini Customer TemplateEXT"
+Table 99965 "PTE Mini Customer TemplateEXT"
 {
 
     fields

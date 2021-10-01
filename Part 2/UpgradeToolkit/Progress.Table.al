@@ -36,11 +36,11 @@ Table 99999 "PVS Upgrade Progress"
     begin
         case "Preparation Step" of
             "Preparation step"::"Import Toolkit":
-                Message('Write some code to test stuff'); // TODO Write some code to test stuff
+                Message('The toolkit is installed succesfully');
             "Preparation step"::"Setup Integration Runtime":
                 Page.Run(4000);
             "Preparation step"::"Install Extensions":
-                Message('Write some code to test this'); // TODO Write some code to test this'
+                ResetPerTenantExtensionStatus;
             "Preparation step"::"Configure Table Mapping":
                 Page.Run(4003);
         end;
@@ -60,6 +60,30 @@ Table 99999 "PVS Upgrade Progress"
 
         Status := Status::Executed;
         Modify;
+    end;
+
+    procedure GetStepStyle(): Text
+    var
+        CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
+    begin
+        case "Preparation Step" of
+            "Preparation Step"::"Install Extensions":
+                if not CloudUpgradeMgt.CustomizationsExist() then
+                    exit('Ambiguous');
+        end;
+        exit('StandardAccent');
+    end;
+
+    procedure ResetPerTenantExtensionStatus()
+    var
+        CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
+    begin
+        if CloudUpgradeMgt.CustomizationsExist() then
+            Description := 'Install Per Tenant Extension'
+        else
+            Description := 'You have not modified the system';
+        if xRec.Description <> Rec.Description then
+            Message('Thanks for checking again... we''ve updated the status...');
     end;
 
     local procedure RunUpgrade()

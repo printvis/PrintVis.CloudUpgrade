@@ -1,4 +1,4 @@
-Table 85401 "PTE Item VariantEXT"
+Table 99963 "PTE Item VariantEXT"
 {
 
     fields

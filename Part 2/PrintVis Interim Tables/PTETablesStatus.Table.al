@@ -1,4 +1,4 @@
-Table 80001 "PTE Tables Status"
+Table 99988 "PTE Tables Status"
 {
     DataPerCompany = false;
 

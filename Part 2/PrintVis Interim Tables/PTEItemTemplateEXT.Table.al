@@ -1,4 +1,4 @@
-Table 81301 "PTE Item TemplateEXT"
+Table 99962 "PTE Item TemplateEXT"
 {
 
     fields

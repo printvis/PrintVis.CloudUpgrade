@@ -1,4 +1,4 @@
-Table 80038 "PTE Purchase HeaderEXT"
+Table 99971 "PTE Purchase HeaderEXT"
 {
 
     fields

@@ -1,4 +1,4 @@
-Table 80111 "PTE Sales Shipment LineEXT"
+Table 99987 "PTE Sales Shipment LineEXT"
 {
 
     fields

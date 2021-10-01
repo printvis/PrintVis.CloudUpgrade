@@ -1,4 +1,4 @@
-Table 80279 "PTE Extended Text HeaderEXT"
+Table 99952 "PTE Extended Text HeaderEXT"
 {
 
     fields

@@ -1,4 +1,4 @@
-Table 80017 "PTE G/L EntryEXT"
+Table 99956 "PTE G/L EntryEXT"
 {
 
     fields

@@ -1,4 +1,4 @@
-Table 80015 "PTE G/L AccountEXT"
+Table 99955 "PTE G/L AccountEXT"
 {
 
     fields

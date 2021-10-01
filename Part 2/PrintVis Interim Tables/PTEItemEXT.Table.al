@@ -1,4 +1,4 @@
-Table 80027 "PTE ItemEXT"
+Table 99959 "PTE ItemEXT"
 {
 
     fields

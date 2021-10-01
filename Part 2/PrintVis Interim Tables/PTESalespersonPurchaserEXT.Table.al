@@ -1,4 +1,4 @@
-Table 80013 "PTE Salesperson/PurchaserEXT"
+Table 99985 "PTE Salesperson/PurchaserEXT"
 {
 
     fields

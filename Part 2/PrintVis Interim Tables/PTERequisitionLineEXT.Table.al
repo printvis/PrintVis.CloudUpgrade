@@ -1,4 +1,4 @@
-Table 80246 "PTE Requisition LineEXT"
+Table 99974 "PTE Requisition LineEXT"
 {
 
     fields

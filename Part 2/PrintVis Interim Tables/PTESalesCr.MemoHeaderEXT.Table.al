@@ -1,4 +1,4 @@
-Table 80114 "PTE Sales Cr.Memo HeaderEXT"
+Table 99977 "PTE Sales Cr.Memo HeaderEXT"
 {
 
     fields

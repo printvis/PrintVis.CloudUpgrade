@@ -1,4 +1,4 @@
-Table 80083 "PTE Item Journal LineEXT"
+Table 99960 "PTE Item Journal LineEXT"
 {
 
     fields

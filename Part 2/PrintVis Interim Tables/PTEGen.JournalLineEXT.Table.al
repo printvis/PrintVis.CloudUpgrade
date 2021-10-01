@@ -1,4 +1,4 @@
-Table 80081 "PTE Gen. Journal LineEXT"
+Table 99953 "PTE Gen. Journal LineEXT"
 {
 
     fields

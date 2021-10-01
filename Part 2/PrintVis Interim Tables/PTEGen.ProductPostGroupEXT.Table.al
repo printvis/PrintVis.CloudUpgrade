@@ -1,4 +1,4 @@
-Table 80251 "PTE Gen. Product PostGroup EXT"
+Table 99954 "PTE Gen. Product PostGroup EXT"
 {
 
     fields

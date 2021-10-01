@@ -1,4 +1,4 @@
-Table 80051 "PTE User Time RegisterEXT"
+Table 99990 "PTE User Time RegisterEXT"
 {
 
     fields

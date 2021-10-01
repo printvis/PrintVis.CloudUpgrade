@@ -1,4 +1,4 @@
-Table 86661 "PTE Return Receipt LineEXT"
+Table 99975 "PTE Return Receipt LineEXT"
 {
 
     fields

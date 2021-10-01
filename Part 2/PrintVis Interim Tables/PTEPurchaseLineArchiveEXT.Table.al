@@ -1,4 +1,4 @@
-Table 85110 "PTE Purchase Line ArchiveEXT"
+Table 99972 "PTE Purchase Line ArchiveEXT"
 {
 
     fields

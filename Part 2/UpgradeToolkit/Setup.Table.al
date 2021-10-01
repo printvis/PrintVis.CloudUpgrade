@@ -24,6 +24,7 @@ Table 99998 "PVS Cloud Upgrade Setup"
     procedure InitializeUpgrade()
     var
         UpgradeProgress: Record "PVS Upgrade Progress";
+        CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
     begin
         Preparations := Preparations::"Setup Integration Runtime";
 
@@ -38,7 +39,11 @@ Table 99998 "PVS Cloud Upgrade Setup"
         UpgradeProgress.Insert;
 
         UpgradeProgress."Preparation Step" := UpgradeProgress."Preparation Step"::"Install Extensions";
-        UpgradeProgress.Description := 'Install Per Tenant Extension';
+        if CloudUpgradeMgt.CustomizationsExist() then
+            UpgradeProgress.Description := 'Install Per Tenant Extension'
+        else
+            UpgradeProgress.Description := 'You have not modified the system';
+
         UpgradeProgress.Status := UpgradeProgress.Status::Required;
         UpgradeProgress.Insert;
 

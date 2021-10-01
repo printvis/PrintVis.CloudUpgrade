@@ -1,4 +1,4 @@
-Table 80032 "PTE Item Ledger EntryEXT"
+Table 99961 "PTE Item Ledger EntryEXT"
 {
 
     fields

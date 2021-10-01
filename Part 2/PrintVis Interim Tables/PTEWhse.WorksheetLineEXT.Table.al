@@ -1,4 +1,4 @@
-Table 87326 "PTE Whse. Worksheet LineEXT"
+Table 99994 "PTE Whse. Worksheet LineEXT"
 {
 
     fields

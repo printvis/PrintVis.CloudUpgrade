@@ -1,4 +1,4 @@
-Table 85065 "PTE Interaction Log EntryEXT"
+Table 99957 "PTE Interaction Log EntryEXT"
 {
 
     fields
