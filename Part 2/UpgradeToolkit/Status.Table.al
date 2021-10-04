@@ -11,7 +11,7 @@ Table 99997 "PTE Upgrade Table Status"
         field(2; Type; Option)
         {
             DataClassification = ToBeClassified;
-            OptionMembers = Customization,PrintVis;
+            OptionMembers = Customization,PrintVis,"Calendar Blocking";
         }
         field(6; Company; Text[200])
         {
@@ -33,6 +33,10 @@ Table 99997 "PTE Upgrade Table Status"
         {
             DataClassification = ToBeClassified;
         }
+        field(22; "Cloud Completed"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(25; "Last Error"; Text[250])
         {
             DataClassification = ToBeClassified;
@@ -44,23 +48,18 @@ Table 99997 "PTE Upgrade Table Status"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(35; "Interim Object No."; Integer)
+        field(35; "Interim Table No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+            Editable = false;
+        }
+        field(38; "PTE Table No."; Integer)
         {
             DataClassification = ToBeClassified;
             Editable = false;
         }
     }
 
-    keys
-    {
-        key(Key1; "Table No.", Type, Company)
-        {
-            Clustered = true;
-        }
-    }
+    keys { key(Key1; "Table No.", Type, Company) { Clustered = true; } }
 
-    fieldgroups
-    {
-    }
 }
-

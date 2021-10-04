@@ -7,7 +7,6 @@ permissionset 99999 "PTE Cloud Upgrade"
         tabledata "PTE Upgrade Table Status" = RIMD,
         tabledata "PVS Upgrade Progress" = RIMD,
         tabledata "PVS Cloud Upgrade Setup" = RIMD,
-        tabledata "PTE Tables Status" = RIMD,
         tabledata "PTE Salesperson/PurchaserEXT" = RIMD,
         tabledata "PTE LocationEXT" = RIMD,
         tabledata "PTE G/L AccountEXT" = RIMD,

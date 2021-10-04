@@ -38,6 +38,10 @@ Page 99998 "PrintVis Cloud Upgrade Details"
                 {
                     ApplicationArea = Basic;
                 }
+                field("Cloud Completed"; Rec."Cloud Completed")
+                {
+                    ApplicationArea = Basic;
+                }
                 field("Records in Table"; Rec."Records in Table")
                 {
                     ApplicationArea = Basic;

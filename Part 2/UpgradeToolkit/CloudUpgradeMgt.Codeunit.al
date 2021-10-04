@@ -8,7 +8,7 @@ codeunit 99999 "PTE Cloud Upgrade Mgt."
         exit(not AllObj.IsEmpty);
     end;
 
-    procedure MoveData() // TODO Fix, call, whatever
+    procedure MovePrintVisData() // TODO Fix, call, whatever
     var
         PTETablesStatus: Record "PTE Upgrade Table Status";
         Company: Record Company;
@@ -25,7 +25,7 @@ codeunit 99999 "PTE Cloud Upgrade Mgt."
                 if Company.Get(PTETablesStatus.Company) then begin
                     CLEARLASTERROR;
                     COMMIT;
-                    if CODEUNIT.RUN(80002, PTETablesStatus) then BEGIN
+                    if CODEUNIT.RUN(Codeunit::"PTE Internal Move Data", PTETablesStatus) then BEGIN
                         PTETablesStatus.Completed := TRUE;
                         if PTETablesStatus.modify() then;
                     END ELSE BEGIN
