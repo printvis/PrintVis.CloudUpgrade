@@ -96,8 +96,7 @@ Table 99999 "PVS Upgrade Progress"
     var
         CloudUpgradeMgt: Codeunit "PTE Cloud Upgrade Mgt.";
     begin
-        CloudUpgradeMgt.MigratePerTenantExtension();
-        CloudUpgradeMgt.MovePrintVisData();
+        CloudUpgradeMgt.MigrateInterimExtensionTables();
     end;
 
     local procedure TestIfRealPerTenantExtensionExists()

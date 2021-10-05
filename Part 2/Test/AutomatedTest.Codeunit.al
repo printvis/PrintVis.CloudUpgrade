@@ -17,7 +17,7 @@ codeunit 99996 "PTE Test Upgrade"
         until Cust.Next() = 0;
 
         // [When]
-        Conversion.MigratePerTenantExtension();
+        Conversion.MigrateInterimExtensionTables();
 
         // [Then]
         Cust.FindSet();
