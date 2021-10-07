@@ -15,7 +15,7 @@ NOTE - Running the Upgrade Toolkit requires a Partner License to be activated on
 The Wizard has automatically scans the database for any data customizations. If you have customized PrintVis it is mandatory to process these changes before preparing PrintVis tables. If you skip this step there is a chance that you remove data that cannot be recovered without restoring a backup.
 As part of the upgrade project we will create the Per Tenant Extension skeleton that will hold your customizations in the Cloud system.
 
-[![ImportUpgradeToolkit](../.media/ImportUpgradeToolkit.png)](https://www.youtube.com/watch?v=XRGSMVC54TM "Import Upgrade Toolkit Click to Watch!")
+[![ImportUpgradeToolkit](../.media/ImportUpgradeToolkit.png)](https://vimeo.com/623385800/88ea0d2f60 "Import Upgrade Toolkit Click to Watch!")
 <br>
 ```
 NOTE - The tool does not detect any changes done to the PrintVis schema such as datatype changes, added option values or changes in length of text and code fields.
@@ -37,7 +37,7 @@ If you click on the link a file will be generated that you can import into C/Sid
 
 The file we have imported in Step 1 needs to be imported into C/Side and the objects should be compiled.
 
-[![ImportGeneratedCode](../.media/ImportGeneratedCode.png)](https://www.youtube.com/watch?v=ZTDkCR3KvHo "Import Upgrade Toolkit Click to Watch!")
+[![ImportGeneratedCode](../.media/ImportGeneratedCode.png)](https://vimeo.com/623412738/63d771a92c "Import Upgrade Toolkit Click to Watch!")
 
 ### Step 3 - Execute Customizations Migration
 
