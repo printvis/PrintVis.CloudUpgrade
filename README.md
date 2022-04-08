@@ -23,6 +23,11 @@ We have also created a wizard to help in this process and make sure you don't fo
 
 ![CloudWizard.png](.media/CloudWizard.png)
 
+## Remarks
+Since Microsoft is changing the data structure of each release some data will be lossed.
+* Item Templates - PrintVis fields needs to be moved by hand (PV20)
+* Customer Templates - PrintVis fields needs to be moved by hand (PV20)
+
 ## Optional Steps
 
 As part of the upgrade there are two optional steps that we guide you with.
