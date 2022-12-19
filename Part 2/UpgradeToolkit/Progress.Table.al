@@ -131,8 +131,6 @@ Table 99999 "PVS Upgrade Progress"
         UpgradeLogic.CapUnitRoundingUpDown();
 
         UpgradeLogic.MergePointerTables();
-        UpgradeLogic.MovedCustomerTemplateIfNotExist();
-        UpgradeLogic.MovedItemTemplateIfNotExist();
         UpgradeLogic.MoveCaseMgtMatrix();
         UpgradeLogic.MovePlanningBoardPermissionDo();
         ConvertCombinedShipments();
