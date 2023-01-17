@@ -27,6 +27,7 @@ We have also created a wizard to help in this process and make sure you don't fo
 Since Microsoft is changing the data structure of each release some data will be lost.
 * Item Templates - PrintVis fields needs to be moved by hand (PV20)
 * Customer Templates - PrintVis fields needs to be moved by hand (PV20)
+SalesOrder Integration PTE fields need can be moved with the example code in the SOMigration folder.
 
 ## Optional Steps
 
