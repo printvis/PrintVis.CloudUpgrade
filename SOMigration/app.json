@@ -1,0 +1,45 @@
+{
+  "id": "ebde9926-1e4b-4560-ad0d-210974186fbe",
+  "name": "SOMigration",
+  "publisher": "Default publisher",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "d3a2c31e-25cc-4a5a-9f21-0129ba360678",
+      "name": "PrintVis Cloud Upgrade Toolkit",
+      "publisher": "NovaVision Software A/S",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "073c8eda-9ed2-48c9-8cee-9d3d96af20f7",
+      "name": "PrintVis SalesOrder Integration",
+      "publisher": "NovaVision Software A/S",
+      "version": "21.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "21.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 99999
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "10.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
